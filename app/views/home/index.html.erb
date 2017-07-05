@@ -1,2 +1,18 @@
 <h1>Welcome</h1>
 <p>This is a basic chat app</p>
+
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <% @rooms.each do |r| %>
+      <li class="list-group-item"> <%= r.name %></li>
+    <% end %>
+  </ul>
+
+  <div class="card-block">
+
+    <%= form_for @room do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit "Create", :class => "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
