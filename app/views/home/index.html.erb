@@ -4,12 +4,13 @@
 <div class="card">
   <ul class="list-group list-group-flush">
     <% @rooms.each do |r| %>
-      <li class="list-group-item"> <%= r.name %></li>
+      <li class="list-group-item">
+        <%= link_to r.name, room_path(r) %>
+      </li>
     <% end %>
   </ul>
 
   <div class="card-block">
-
     <%= form_for @room do |f| %>
       <%= f.text_field :name %>
       <%= f.submit "Create", :class => "btn btn-primary" %>

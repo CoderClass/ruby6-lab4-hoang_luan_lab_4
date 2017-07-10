@@ -1,0 +1,16 @@
+<div id="messages">
+    <%= render @messages %>
+</div>
+
+<%= form_for [@room, Message.new] do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>
+
+<script type="text/javascript">
+  function updateMessagesViaJs() {
+    console.log("inside updateMessagesViaJSON");
+    $.getScript('<%= room_messages_path(@room) %>', function(messages) {
+    });
+  }
+</script>

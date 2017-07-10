@@ -15,14 +15,16 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
+        <% if current_user.nil? %>
+          <%= form_tag('/login', class: "form-inline") do%>
+            <%= text_field_tag 'username', nil, class: "form-control mr-sm-2" %>
+            <%= submit_tag "Login", class: "btn btn-outline-success" %>
+          <% end %>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to "Logout", logout_path, class: "nav-link"%>
+          </li>
+        <% end %>
       </ul>
       <form class="form-inline float-xs-right">
         <input class="form-control" type="text" placeholder="Search">
